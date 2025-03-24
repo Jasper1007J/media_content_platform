@@ -2,6 +2,7 @@
 from datetime import datetime 
 import pandas as pd 
 import numpy as np
+import database.data_base_connection as db
 
 youtube_data = pd.read_csv('./data_sets/youtube_data.csv')
 
@@ -70,5 +71,23 @@ dim_engagement = dim_engagement[['Engagement_id','Views','Likes','Comments','Eng
 
 # Category Table Creation
 dim_cat = merged_data[['Category_id', 'Categories']].drop_duplicates().reset_index(drop=True)
+
+
+merged_data["Day"] = merged_data["Date"].dt.day
+merged_data["Month"] = merged_data["Date"].dt.month
+merged_data["Year"] = merged_data["Date"].dt.year
+
+
+print(merged_data.isna().sum())
+print(merged_data['Engagement_rate'].isna().sum())  # Count NaN values
+print(merged_data['Engagement_rate'].isnull().sum())  # Alternative NaN check
+print((merged_data['Engagement_rate'] == float('inf')).sum())  # Check for infinity
+print((merged_data['Engagement_rate'] == float('-inf')).sum())  #
+
+merged_data.dropna(subset = ['Engagement_rate'],inplace= True)
+max_finite_value = merged_data[merged_data['Engagement_rate'] != float('inf')]['Engagement_rate'].max()
+merged_data['Engagement_rate'].replace([float('inf'), float('-inf')], max_finite_value)
+
+db.db_connect(merged_data)
 
 
