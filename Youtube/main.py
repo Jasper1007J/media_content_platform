@@ -7,10 +7,10 @@ import pandas as pd
 from datetime import datetime
 import matplotlib.pyplot as plt
 import seaborn as sns
-import channel_stats
-import video_ids
-import video_data
-import category_extraction
+import Youtube.channel_stats as channel_stats
+import Youtube.video_ids as video_ids
+import Youtube.video_data as video_data
+import Youtube.category_extraction as category_extraction
 
 #access the data from the dotenv file
 load_dotenv()
@@ -74,6 +74,5 @@ for data in video_data['Published_date']:
 video_data['Source'] = 'YoutubeAPI'
 video_data["Title_id"] = video_data["Title"].factorize()[0] 
 
-video_data.to_csv('./datasets/youtube_data.csv',index=False)
+video_data.to_csv('./data_sets/youtube_data.csv',index=False)
 
-print(video_data.head())
