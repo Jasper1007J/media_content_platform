@@ -1,7 +1,7 @@
 from kaggle.api.kaggle_api_extended import KaggleApi
 import pandas as pd
-import Kaggle.category_convert 
-import Kaggle.category_id 
+import Kaggle.category_convert as category_convert
+import Kaggle.category_id  as category_id
 api = KaggleApi()
 api.authenticate()
 

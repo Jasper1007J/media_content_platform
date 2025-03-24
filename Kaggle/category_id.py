@@ -38,5 +38,7 @@ def get_category_id(kaggle_data):
         category_to_id = {v: k for k, v in categories.items()}
 
         # Add category_id column
+        kaggle_data["Categories"] = kaggle_data["Categories"].fillna("Others")
+
         kaggle_data["Category_id"] = kaggle_data["Categories"].map(category_to_id).astype("Int64")
         return kaggle_data
