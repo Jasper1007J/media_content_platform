@@ -1,6 +1,6 @@
 #  Media Content Analytics Platform
 
-A data visualization and analytics platform for media content insights using **Streamlit**, **MySQL**, **Matplotlib** and **Plotly**.
+A data visualization and analytics platform for media content insights using **Python**, **Streamlit**, **MySQL**, **Matplotlib** and **Plotly**.
 
 ## 🚀 Features
 
@@ -14,17 +14,16 @@ A data visualization and analytics platform for media content insights using **S
 ```
 MEDIA_CONTENT_PLATFORM/
 │── data_sets/               # Raw datasets (CSV files)
-│── database_tables/         # Predefined table structures (CSV files)
+│── database/                # Establishing the connection with database
 |── Kaggle/                  # Processing the data from Kaggle Dataset
 │── sources/                 # Data source files
 |── Youtube/                 # Processing data from Youtube API
-│── med_env/                 # Virtual environment (optional)
-│── .env                     # Environment variables (hidden)
 │── .env_sample              # Sample environment file
 │── .gitignore               # Git ignore file
 │── app.py                   # Streamlit app script
 │── data_extraction.ipynb    # Data extraction & preprocessing notebook
 │── LICENSE                  # License file
+|── main.py                  # Main file for implementation of the code
 │── README.md                # Project documentation
 ```
 
@@ -62,7 +61,7 @@ streamlit run app.py
 ## 🗄️ Database Setup
 ```sh
 1️⃣ Start MySQL Server and create the `youtube` database.
-2️⃣ Import the predefined tables from `database_tables/`.
+2️⃣ Import the predefined tables from `database/`.
 3️⃣ Update `.env` file with database credentials.
 ```
 
