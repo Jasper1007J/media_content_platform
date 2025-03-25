@@ -33,7 +33,7 @@ MEDIA_CONTENT_PLATFORM/
 1️⃣ **Clone the repository**
 
 ```sh
-git clone https://github.com/your-username/media-content-platform.git
+git clone https://github.com/Jasper1007J/media-content-platform.git
 cd media-content-platform
 ```
 
