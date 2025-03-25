@@ -104,7 +104,7 @@ if st.session_state.page == "Overview":
     col3.metric("💬 Avg. Engagement Rate", f"{avg_engagement:.2f}%")
     
     st.subheader("💾 Data Preview")
-    page_size = st.selectbox("📜 Records per Page", [5, 10, 20, 50, 100, 500, 1000, 10000], index=1)
+    page_size = st.selectbox("📜 Records per Page", [10, 50, 100, 500, 1000, 10000,100000], index=1)
     total_pages = (len(df) // page_size) + 1
     page_number = st.number_input("Page Number", min_value=1, max_value=total_pages, value=1)
     start_idx = (page_number - 1) * page_size
