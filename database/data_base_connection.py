@@ -9,7 +9,7 @@ def db_connect(merged_data):
     conn = mysql.connector.connect(
         host=os.getenv('HOSTNAME'),
         user=os.getenv('USERNAME'),
-        password=os.getnev("PASSWORD")
+        password=os.getenv("PASSWORD")
     )
 
     # Creating a cursor object

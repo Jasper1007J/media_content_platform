@@ -3,6 +3,7 @@ from datetime import datetime
 import pandas as pd 
 import numpy as np
 import database.data_base_connection as db
+import os 
 
 youtube_data = pd.read_csv('./data_sets/youtube_data.csv')
 
@@ -84,9 +85,17 @@ print(merged_data['Engagement_rate'].isnull().sum())  # Alternative NaN check
 print((merged_data['Engagement_rate'] == float('inf')).sum())  # Check for infinity
 print((merged_data['Engagement_rate'] == float('-inf')).sum())  #
 
-merged_data.dropna(subset = ['Engagement_rate'],inplace= True)
-max_finite_value = merged_data[merged_data['Engagement_rate'] != float('inf')]['Engagement_rate'].max()
-merged_data['Engagement_rate'].replace([float('inf'), float('-inf')], max_finite_value)
+merged_data.dropna(subset=['Engagement_rate'], inplace=True)
+
+# Find the maximum finite value, excluding infinities
+max_finite_value = merged_data.loc[
+    merged_data['Engagement_rate'] != float('inf'), 'Engagement_rate'
+].max()
+
+# Replace infinities with the max finite value
+merged_data['Engagement_rate'].replace(
+    [float('inf'), float('-inf')], max_finite_value, inplace=True
+)
 
 db.db_connect(merged_data)
 
